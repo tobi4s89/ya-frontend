@@ -1,0 +1,19 @@
+// Import deprecate mixin
+@import '~bootstrap/scss/mixins/deprecate';
+
+// Import grid
+@import '~bootstrap/scss/bootstrap-grid';
+
+// Import text mixins
+@import '~bootstrap/scss/mixins/text-emphasis';
+@import '~bootstrap/scss/mixins/text-hide';
+@import '~bootstrap/scss/mixins/text-truncate';
+
+// Import hover mixin
+@import '~bootstrap/scss/mixins/hover';
+
+// Import image mixins
+@import '~bootstrap/scss/mixins/image';
+
+// Import text utility
+@import '~bootstrap/scss/utilities/text';

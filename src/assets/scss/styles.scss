@@ -1,0 +1,65 @@
+// Import defaults
+@import './reset';
+
+// Import FontAwesome
+$fa-font-path: '~font-awesome/fonts';
+@import '~font-awesome/scss/font-awesome';
+
+// Import ElementUI
+$--font-path: '~element-ui/lib/theme-chalk/fonts'; /* required */
+@import '~element-ui/packages/theme-chalk/src/index';
+
+body {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button, a {
+  cursor: pointer;
+}
+
+strong, b {
+  font-weight: bold;
+}
+
+i {
+  font-style: italic;
+}
+
+p {
+  color: $gray-500;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h5, button {
+  font-family: $montserrat;
+  font-weight: 700;
+}
+
+// Position
+.position {
+  &-relative {
+    position: relative !important;
+  }
+  &-absolute {
+    position: absolute !important;
+  }
+  &-fixed {
+    position: fixed !important;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.el-icon-circle-check {
+  color: $--color-success;
+}

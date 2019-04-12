@@ -1,0 +1,28 @@
+// Transition
+@mixin transition($prop, $duration) {
+  -moz-transition: $prop $duration ease-in-out;
+  -webkit-transition: $prop $duration ease-in-out;
+  transition: $prop $duration ease-in-out;
+}
+
+// Sizing
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    @each $prop, $abbrev in (width: w, height: h) {
+      @each $size, $length in $sizes {
+        .#{$abbrev}#{$infix}-#{$size} { #{$prop}: $length !important; }
+      }
+    }
+  }
+}
+
+// Text wrapping
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .text#{$infix}-wrap   { white-space: normal !important; }
+    .text#{$infix}-nowrap  { white-space: nowrap !important; }
+  }
+}
