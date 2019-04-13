@@ -21,6 +21,7 @@
           class="m-1"
           type="primary"
           round
+          @click="openDialog('property-add')"
         >
           Voeg een eigenschap toe
         </el-button>
@@ -38,6 +39,7 @@
           class="m-1"
           type="success"
           round
+          @click="openDialog('algorithm-calculate')"
         >
           Start
         </el-button>
@@ -47,7 +49,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 import Service from '@/services/ApiService'
 import yaList from '@/components/List'
 
@@ -56,18 +58,18 @@ export default {
   components: {
     yaList
   },
-  data () {
-    return {
-      properties: [],
-      users: []
-    }
+  computed: {
+    ...mapState([
+      'properties',
+      'users'
+    ])
   },
   beforeRouteEnter (to, from, next) {
     Service.get('properties').then((propResponse) => {
       Service.get('users').then((userResponse) => {
         next(vm => {
-          vm.properties = propResponse
-          vm.users = userResponse
+          vm.setProperties(propResponse)
+          vm.setUsers(userResponse)
         })
       }, (err) => {
         console.warn(err)
@@ -78,14 +80,29 @@ export default {
   },
   methods: {
     ...mapMutations([
-      'setDialog'
+      'setDialog',
+      'setProperties',
+      'setUsers'
     ]),
     openDialog(type) {
+      let items = []
+      let title = 'eigenschap'
+
+      if (type === 'user-add') {
+        items = this.properties
+        title = 'gebruiker'
+      }
+
+      if (type === 'algorithm-calculate') {
+        items = this.users
+        title = 'Selecteer een vragende en een aangeboden gebruiker'
+      }
+
       let data = {
         type: type,
         content: {
-          name: type === 'user-add' ? 'gebruiker' : 'eigenschap',
-          properties: type === 'user-add' ? this.properties : []
+          name: title,
+          data: items
         },
         fullscreen: true,
         visible: true

@@ -1,7 +1,19 @@
 <script>
 export default {
   methods: {
-    sortByString (collection, key = null) {
+    sortByBoolean (collection, key = null) {
+      collection.sort((a, b) => {
+        if (key) {
+          a = a[key]
+          b = b[key]
+        }
+
+        return b - a;
+      })
+
+      return collection
+    },
+    sortBy (collection, key = null) {
       collection.sort((a, b) => {
         if (key) {
           a = a[key]

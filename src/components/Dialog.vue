@@ -18,12 +18,16 @@
 
 <script>
 import { mapMutations, mapState } from 'vuex'
-import yaUser from '@/components/User/User'
-import yaUserAdd from '@/components/User/Add'
+import yaAlgorithmCalculate from '@/components/Dialog/Algorithm/Calculate'
+import yaPropertyAdd from '@/components/Dialog/Property/Add'
+import yaUser from '@/components/Dialog/User/User'
+import yaUserAdd from '@/components/Dialog/User/Add'
 
 export default {
   name: 'ya-dialog',
   components: {
+    yaAlgorithmCalculate,
+    yaPropertyAdd,
     yaUser,
     yaUserAdd
   },
@@ -45,6 +49,7 @@ export default {
       let data = {
         type: '',
         content: {},
+        fullscreen: false,
         visible: value
       }
       this.setDialog(data)
