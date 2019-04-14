@@ -18,7 +18,13 @@
       </span>
     </div>
     <div
-      v-if="matchingItems.length"
+      v-if="matchingItems.length === 0"
+      class="d-flex justify-content-center"
+    >
+      <p class="p-5"><i>Er zijn geen eigenschappen die overeenkomen</i></p>
+    </div>
+    <div
+      v-else
       class="d-flex justify-content-between align-items-center"
     >
       <ul class="matching-items">
