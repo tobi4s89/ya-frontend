@@ -17,7 +17,10 @@
         {{ firstName }} matcht met een score van {{ score }}% met {{ secondName }}! Deze eigenschappen komen overeen:
       </span>
     </div>
-    <div class="d-flex justify-content-between align-items-center">
+    <div
+      v-if="matchingItems.length"
+      class="d-flex justify-content-between align-items-center"
+    >
       <ul class="matching-items">
         <li
           v-for="(item, index) in matchingItems"

@@ -16,7 +16,7 @@
           />
         </div>
       </div>
-      <div class="row justify-content-center">
+      <div class="row justify-content-center mb-4">
         <el-button
           class="m-1"
           type="primary"
@@ -53,6 +53,11 @@
         >
           Bekijk rapportages
         </el-button>
+      </div>
+      <div class="row justify-content-center bottom-links">
+        <a href="https://www.itsallyours.nl/pdf/alg_vb1.pdf" target="_blank">Algoritme voorbeeld 1</a>&nbsp;|&nbsp;
+        <a href="https://www.itsallyours.nl/pdf/alg_vb2.pdf" target="_blank">Algoritme voorbeeld 2</a>&nbsp;|&nbsp;
+        <a href="https://www.itsallyours.nl/pdf/alg_vb3.pdf" target="_blank">Algoritme voorbeeld 3</a>
       </div>
     </div>
   </main>
