@@ -3,12 +3,7 @@ import idb from 'idb'
 
 class DbService {
   constructor () {
-    this.module = 'ya-frontned'
-  }
-  addCollection (st, items) {
-    items.forEach((item) => {
-      this.writeData(st, item)
-    })
+    this.module = 'ya-frontend'
   }
   clearAllData (st) {
     return this.dbPromise().then((db) => {
@@ -25,26 +20,19 @@ class DbService {
         // a placeholder case so that the switch block will
         // execute when the database is first created
         // (oldVersion is 0)
-
+        case 1:
+          // Creating the reports object store
+          db.createObjectStore('reports', { autoIncrement: true })
       }
     })
   }
-  fetchDb (st, items, clear = null) {
+  addItem (st, item, clear = null) {
     if (clear) {
       this.clearAllData(st).then(() => {
-        this.addCollection(st, items)
+        return this.writeData(st, item)
       })
     } else {
-      this.addCollection(st, items)
-    }
-  }
-  fetchItemDb (st, item, clear = null) {
-    if (clear) {
-      this.clearAllData(st).then(() => {
-        this.writeData(st, item)
-      })
-    } else {
-      this.writeData(st, item)
+      return this.writeData(st, item)
     }
   }
   readAllData (st) {

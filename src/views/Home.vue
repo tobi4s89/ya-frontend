@@ -43,6 +43,16 @@
         >
           Start
         </el-button>
+        <el-button
+          v-if="reports.length"
+          class="m-1"
+          type="info"
+          plain
+          round
+          @click="openDialog('report-list')"
+        >
+          Bekijk rapportages
+        </el-button>
       </div>
     </div>
   </main>
@@ -51,6 +61,7 @@
 <script>
 import { mapMutations, mapState } from 'vuex'
 import Service from '@/services/ApiService'
+import DbService from '@/services/DbService'
 import yaList from '@/components/List'
 
 export default {
@@ -61,6 +72,7 @@ export default {
   computed: {
     ...mapState([
       'properties',
+      'reports',
       'users'
     ])
   },
@@ -70,6 +82,12 @@ export default {
         next(vm => {
           vm.setProperties(propResponse)
           vm.setUsers(userResponse)
+
+          if (window.indexedDB) {
+            DbService.readAllData('reports').then((response) => {
+              vm.setReports(response)
+            })
+          }
         })
       }, (err) => {
         console.warn(err)
@@ -82,20 +100,29 @@ export default {
     ...mapMutations([
       'setDialog',
       'setProperties',
+      'setReports',
       'setUsers'
     ]),
     openDialog(type) {
-      let items = []
-      let title = 'eigenschap'
+      let items
+      let title
 
-      if (type === 'user-add') {
-        items = this.properties
-        title = 'gebruiker'
-      }
-
-      if (type === 'algorithm-calculate') {
-        items = this.users
-        title = 'Selecteer een vragende en een aangeboden gebruiker'
+      switch (type) {
+        case 'user-add':
+          items = this.properties
+          title = 'gebruiker'
+          break
+        case 'algorithm-calculate':
+          items = this.users
+          title = 'Selecteer een vragende en een aangeboden gebruiker'
+          break
+        case 'report-list':
+          items = this.reports
+          title = 'Opgeslagen rapportages'
+          break
+        default:
+          items = []
+          title = 'eigenschap'
       }
 
       let data = {

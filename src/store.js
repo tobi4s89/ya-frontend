@@ -12,6 +12,7 @@ export default new Vuex.Store({
       visible: false
     },
     properties: [],
+    reports: [],
     users: []
   },
   mutations: {
@@ -21,6 +22,9 @@ export default new Vuex.Store({
     setProperties (state, data) {
       state.properties = data
     },
+    setReports (state, data) {
+      state.reports = data
+    },
     setUsers (state, data) {
       state.users = data
     }
@@ -28,6 +32,7 @@ export default new Vuex.Store({
   actions: {
     setDialog: state => state.dialog,
     setProperties: state => state.properties,
+    setReports: state => state.reports,
     setUsers: state => state.users
   }
 })

@@ -20,6 +20,7 @@
 import { mapMutations, mapState } from 'vuex'
 import yaAlgorithmCalculate from '@/components/Dialog/Algorithm/Calculate'
 import yaPropertyAdd from '@/components/Dialog/Property/Add'
+import yaReportList from '@/components/Dialog/Report/List'
 import yaUser from '@/components/Dialog/User/User'
 import yaUserAdd from '@/components/Dialog/User/Add'
 
@@ -28,6 +29,7 @@ export default {
   components: {
     yaAlgorithmCalculate,
     yaPropertyAdd,
+    yaReportList,
     yaUser,
     yaUserAdd
   },

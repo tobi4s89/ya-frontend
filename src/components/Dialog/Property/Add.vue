@@ -77,7 +77,6 @@ export default {
   },
   methods: {
     ...mapMutations([
-      'setDialog',
       'setProperties'
     ]),
     submitProperty () {
@@ -95,12 +94,7 @@ export default {
             this.setProperties(properties)
 
             // Close dialog with default data
-            this.setDialog({
-              type: '',
-              content: {},
-              fullscreen: false,
-              visible: false
-            })
+            this.$parent.$parent.updateDialog(false)
 
             this.$message({
               message: this.addProperty.name + ' is opgeslagen',
