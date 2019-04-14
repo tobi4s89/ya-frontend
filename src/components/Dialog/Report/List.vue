@@ -9,6 +9,7 @@
             </div>
             <el-input
               v-model="searchWord"
+              :clearable="true"
               placeholder="Zoek op gebruiker"
               @keyup.enter.native="handleSearch"
             >
@@ -20,6 +21,12 @@
             </el-input>
           </el-card>
         </div>
+      </div>
+      <div
+        v-if="results.length === 0"
+        class="row justify-content-center"
+      >
+        <p class="p-5"><i>Helaas, geen rapportages gevonden</i></p>
       </div>
       <div
         v-for="(report, index) in results"
@@ -61,9 +68,27 @@ export default {
       searchWord: ''
     }
   },
+  watch: {
+    searchWord (value) {
+      if (value === '') {
+        this.results = this.item.data
+      }
+    }
+  },
   methods: {
     handleSearch () {
+      if (this.searchWord !== '') {
+        let items = this.item.data
 
+        this.results = items.filter((item) => {
+          let founded = false
+          if (item.firstName.toLowerCase().indexOf(this.searchWord.toLowerCase()) > -1 ||item.secondName.toLowerCase().indexOf(this.searchWord.toLowerCase()) > -1) {
+            founded = true
+          }
+
+          return founded
+        })
+      }
     }
   },
   mounted () {
