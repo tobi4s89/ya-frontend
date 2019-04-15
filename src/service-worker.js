@@ -3,6 +3,8 @@ workbox.setConfig({
   debug: false
 })
 
+let version = 'v1'
+
 workbox.core.setCacheNameDetails({
   prefix: 'enjoj-business',
   suffix: version,
