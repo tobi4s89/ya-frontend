@@ -4,9 +4,9 @@
 
 [Yonego assignment Back-end](https://github.com/tobi4s89/ya-backend)
 
-[Documentation](https://github.com/tobi4s89/ya-backend/docs/DOCUMANTATION.md)
+[Documentation](https://github.com/tobi4s89/ya-backend/blob/master/docs/DOCUMENTATION.md)
 
-[Quick start](https://github.com/tobi4s89/ya-backend/docs/QUICK_START.md)
+[Quick start](https://github.com/tobi4s89/ya-backend/blob/master/docs/QUICK_START.md)
 
 #### Node.js and npm
 Make sure you've installed [Node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to your local sytem.
