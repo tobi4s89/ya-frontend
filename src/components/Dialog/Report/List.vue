@@ -82,7 +82,7 @@ export default {
 
         this.results = items.filter((item) => {
           let founded = false
-          if (item.firstName.toLowerCase().indexOf(this.searchWord.toLowerCase()) > -1 ||item.secondName.toLowerCase().indexOf(this.searchWord.toLowerCase()) > -1) {
+          if (item.firstName.toLowerCase().indexOf(this.searchWord.toLowerCase()) > -1 || item.secondName.toLowerCase().indexOf(this.searchWord.toLowerCase()) > -1) {
             founded = true
           }
 
